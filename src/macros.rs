@@ -1407,7 +1407,8 @@ mod tests {
   }
 
   use lib::std::convert::From;
-  #[derive(Debug, PartialEq)]
+  #[cfg_attr(feature = "debug", derive(Debug))]
+  #[derive(PartialEq)]
   pub struct CustomError(&'static str);
   impl From<u32> for CustomError {
     fn from(_: u32) -> Self {

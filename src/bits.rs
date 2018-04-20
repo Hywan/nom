@@ -434,7 +434,8 @@ mod tests {
     );
   }
 
-  #[derive(PartialEq, Debug)]
+  #[cfg_attr(feature = "debug", derive(Debug))]
+  #[derive(PartialEq)]
   struct FakeUint(u32);
 
   impl AddAssign for FakeUint {

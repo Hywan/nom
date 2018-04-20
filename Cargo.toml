@@ -23,11 +23,12 @@ include = [
 
 [features]
 alloc = []
-std = ["alloc", "memchr/use_std"]
+std = ["alloc", "memchr/use_std", "debug"]
 default = ["std"]
 regexp = ["regex"]
 regexp_macros = ["regexp", "lazy_static"]
 verbose-errors = ["alloc"]
+debug = []
 
 [dependencies.regex]
 version = "^0.2"

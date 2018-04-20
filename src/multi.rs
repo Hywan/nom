@@ -1449,7 +1449,8 @@ mod tests {
     )
   }
 
-  #[derive(Debug, Clone, PartialEq)]
+  #[cfg_attr(feature = "debug", derive(Debug))]
+  #[derive(Clone, PartialEq)]
   pub struct NilError;
 
   impl From<u32> for NilError {

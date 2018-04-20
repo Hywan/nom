@@ -420,7 +420,8 @@ pub fn print_offsets<E>(input: &[u8], from: usize, offsets: &[(ErrorKind<E>, usi
 
 /// indicates which parser returned an error
 #[cfg_attr(rustfmt, rustfmt_skip)]
-#[derive(Debug,PartialEq,Eq,Hash,Clone)]
+#[cfg_attr(feature = "debug", derive(Debug))]
+#[derive(PartialEq, Eq, Hash, Clone)]
 #[allow(deprecated)]
 pub enum ErrorKind<E = u32> {
   Custom(E),

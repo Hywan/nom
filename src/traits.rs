@@ -648,7 +648,8 @@ impl<'a> InputTakeAtPosition for CompleteStr<'a> {
 
 /// indicates wether a comparison was successful, an error, or
 /// if more data was needed
-#[derive(Debug, PartialEq)]
+#[cfg_attr(feature = "debug", derive(Debug))]
+#[derive(PartialEq)]
 pub enum CompareResult {
   Ok,
   Incomplete,

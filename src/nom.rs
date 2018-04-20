@@ -9,7 +9,7 @@
 #[cfg(feature = "alloc")]
 use lib::std::boxed::Box;
 
-#[cfg(feature = "std")]
+#[cfg(feature = "debug")]
 use lib::std::fmt::Debug;
 use internal::*;
 use traits::{AsChar, InputIter, InputLength, InputTakeAtPosition};
@@ -32,7 +32,7 @@ pub fn tag_cl<'a, 'b>(rec: &'a [u8]) -> Box<Fn(&'b [u8]) -> IResult<&'b [u8], &'
   })
 }
 
-#[cfg(feature = "std")]
+#[cfg(feature = "debug")]
 #[inline]
 pub fn print<T: Debug>(input: T) -> IResult<T, ()> {
   println!("{:?}", input);
@@ -575,7 +575,8 @@ pub fn le_i64(i: &[u8]) -> IResult<&[u8], i64> {
 }
 
 /// Configurable endianness
-#[derive(Debug, PartialEq, Eq, Clone, Copy)]
+#[cfg_attr(feature = "debug", derive(Debug))]
+#[derive(PartialEq, Eq, Clone, Copy)]
 pub enum Endianness {
   Big,
   Little,

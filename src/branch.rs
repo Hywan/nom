@@ -918,7 +918,8 @@ mod tests {
   );
 
   #[cfg(feature = "alloc")]
-  #[derive(Debug, Clone, PartialEq)]
+  #[cfg_attr(feature = "debug", derive(Debug))]
+  #[derive(Clone, PartialEq)]
   pub struct ErrorStr(String);
 
   #[cfg(feature = "alloc")]

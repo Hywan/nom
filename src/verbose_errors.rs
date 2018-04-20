@@ -26,7 +26,8 @@ use lib::std::vec::Vec;
 ///
 /// It can represent a linked list of errors, indicating the path taken in the parsing tree, with corresponding position in the input data.
 /// It depends on P, the input position (for a &[u8] parser, it would be a &[u8]), and E, the custom error type (by default, u32)
-#[derive(Debug, PartialEq, Eq, Clone)]
+#[cfg_attr(feature = "debug", derive(Debug))]
+#[derive(PartialEq, Eq, Clone)]
 pub enum Context<I, E = u32> {
   /// An error code, represented by an ErrorKind, which can contain a custom error code represented by E
   Code(I, ErrorKind<E>),

@@ -16,7 +16,8 @@
 use util::{Convert, ErrorKind};
 use lib::std::convert::From;
 
-#[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "debug", derive(Debug))]
+#[derive(Clone, PartialEq)]
 pub enum Context<I, E = u32> {
   Code(I, ErrorKind<E>),
 }

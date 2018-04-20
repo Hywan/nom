@@ -19,7 +19,8 @@ use lib::std::string::String;
 ///
 /// This means that this input type will completely avoid nom's streaming features
 /// and `Incomplete` results.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
+#[cfg_attr(feature = "debug", derive(Debug))]
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
 pub struct CompleteStr<'a>(pub &'a str);
 
 impl<'a> From<&'a str> for CompleteStr<'a> {
@@ -188,7 +189,8 @@ impl<'a> ExtendInto for CompleteStr<'a> {
 ///
 /// This means that this input type will completely avoid nom's streaming features
 /// and `Incomplete` results.
-#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
+#[cfg_attr(feature = "debug", derive(Debug))]
+#[derive(Clone, Copy, PartialEq, Eq, Hash)]
 pub struct CompleteByteSlice<'a>(pub &'a [u8]);
 
 impl<'a> From<&'a [u8]> for CompleteByteSlice<'a> {
@@ -358,7 +360,8 @@ impl<'a> super::util::HexDisplay for CompleteByteSlice<'a> {
   }
 }
 
-#[derive(Clone, Copy, Debug, PartialEq, Hash)]
+#[cfg_attr(feature = "debug", derive(Debug))]
+#[derive(Clone, Copy, PartialEq, Hash)]
 pub struct Input<T> {
   pub inner: T,
   pub at_eof: bool,

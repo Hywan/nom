@@ -18,7 +18,8 @@ use simple_errors::Context;
 pub type IResult<I, O, E = u32> = Result<(I, O), Err<I, E>>;
 
 /// Contains information on needed data if a parser returned `Incomplete`
-#[derive(Debug, PartialEq, Eq, Clone, Copy)]
+#[cfg_attr(feature = "debug", derive(Debug))]
+#[derive(PartialEq, Eq, Clone, Copy)]
 pub enum Needed {
   /// needs more data, but we do not know how much
   Unknown,
@@ -68,7 +69,8 @@ impl Needed {
 /// you can know precisely which parser got to which part of the input.
 /// The main drawback is that it is a lot slower than default error
 /// management.
-#[derive(Debug, Clone, PartialEq)]
+#[cfg_attr(feature = "debug", derive(Debug))]
+#[derive(Clone, PartialEq)]
 pub enum Err<I, E = u32> {
   /// There was not enough data
   Incomplete(Needed),

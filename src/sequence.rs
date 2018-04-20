@@ -501,13 +501,15 @@ mod tests {
     );
   );
 
-  #[derive(PartialEq, Eq, Debug)]
+  #[cfg_attr(feature = "debug", derive(Debug))]
+  #[derive(PartialEq, Eq)]
   struct B {
     a: u8,
     b: u8,
   }
 
-  #[derive(PartialEq, Eq, Debug)]
+  #[cfg_attr(feature = "debug", derive(Debug))]
+  #[derive(PartialEq, Eq)]
   struct C {
     a: u8,
     b: Option<u8>,
